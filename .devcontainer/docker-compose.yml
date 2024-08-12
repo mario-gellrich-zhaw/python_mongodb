@@ -9,7 +9,7 @@ services:
       - PYTHONUNBUFFERED=1
     # ports:
     #  - "8000:8000"
-    working_dir: /workspace
+    # working_dir: /workspace
     depends_on:
       - mongo
 

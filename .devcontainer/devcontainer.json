@@ -7,9 +7,12 @@
         "vscode": {
             "extensions": [
                 "ms-python.python",
+                "ms-toolsai.jupyter",
                 "ms-python.vscode-pylance",
                 "ms-azuretools.vscode-docker",
-                "mongodb.mongodb-vscode"
+				"analytic-signal.preview-pdf",
+				"ms-azuretools.azure-dev",
+				"ms-python.vscode-pylance"
             ]
         }
     },
