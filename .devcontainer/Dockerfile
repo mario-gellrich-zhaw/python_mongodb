@@ -1,5 +1,5 @@
 # Use the official Python image from the Docker Hub
-FROM mcr.microsoft.com/devcontainers/python:3.11-bullseye
+FROM mcr.microsoft.com/devcontainers/python:3.11
 
 # Install MongoDB
 RUN apt-get update && apt-get install -y gnupg wget \
