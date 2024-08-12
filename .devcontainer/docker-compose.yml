@@ -1,0 +1,19 @@
+services:
+  python:
+    image: mcr.microsoft.com/devcontainers/python:3.11
+    volumes:
+      - .:/workspace:rw
+    command: /bin/bash -c "while sleep 1000; do :; done"
+    environment:
+      - PYTHONUNBUFFERED=1
+    working_dir: /workspace
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongodb/mongodb-community-server:latest
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
