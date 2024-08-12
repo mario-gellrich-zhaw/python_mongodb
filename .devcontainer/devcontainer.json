@@ -18,5 +18,5 @@
         27017
     ],
     "postCreateCommand": "pip install -r /workspace/requirements.txt",
-    "remoteUser": "vscode"
+    "remoteUser": "root"
 }
