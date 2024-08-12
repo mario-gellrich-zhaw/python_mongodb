@@ -9,7 +9,6 @@ services:
     #  - "8000:8000"
     volumes:
       - .:/workspace:cached
-    # working_dir: /workspace
     depends_on:
       - mongo
 
