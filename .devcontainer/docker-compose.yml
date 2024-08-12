@@ -7,16 +7,16 @@ services:
     command: /bin/bash -c "while sleep 1000; do :; done"
     environment:
       - PYTHONUNBUFFERED=1
-    ports:
-      - "8000:8000"
+    # ports:
+    #  - "8000:8000"
     working_dir: /workspace
     depends_on:
       - mongo
 
   mongo:
     image: mongodb/mongodb-community-server:latest
-    ports:
-      - "27017:27017"
+    # ports:
+    #  - "27017:27017"
     volumes:
       - mongo-data:/data/db
 
