@@ -2,13 +2,13 @@ services:
 
   python:
     image: mcr.microsoft.com/devcontainers/python:3.11
-    volumes:
-      - .:/workspace:cached
     command: /bin/bash -c "while sleep 1000; do :; done"
     environment:
       - PYTHONUNBUFFERED=1
     # ports:
     #  - "8000:8000"
+    volumes:
+      - .:/workspace:cached
     # working_dir: /workspace
     depends_on:
       - mongo
