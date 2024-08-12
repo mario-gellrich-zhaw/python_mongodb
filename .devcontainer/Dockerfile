@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y gnupg wget \
 RUN mkdir -p /data/db
 
 # Expose MongoDB port
-EXPOSE 27018
+EXPOSE 27017
 
 # Start MongoDB when the container starts
 CMD ["mongod", "--bind_ip_all"]
