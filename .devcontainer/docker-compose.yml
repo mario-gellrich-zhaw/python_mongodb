@@ -3,7 +3,7 @@ services:
   python:
     image: mcr.microsoft.com/devcontainers/python:3.11
     volumes:
-      - .:/workspace:rw
+      - .:/workspace:cached
     command: /bin/bash -c "while sleep 1000; do :; done"
     environment:
       - PYTHONUNBUFFERED=1
