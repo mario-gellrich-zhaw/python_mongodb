@@ -56,6 +56,45 @@ The notebooks use the hostname `mongo`. If MongoDB runs under another
 hostname or port, update the `MongoClient` connection string in both
 notebooks.
 
+## Development Container Architecture
+
+The `.devcontainer/docker-compose.yml` file defines two separate containers, not one:
+
+```text
+Codespace VM (Docker host)
+ ├── "python" container  -> VS Code, the terminal, and the notebooks run here
+ └── "mongo" container   -> MongoDB runs here, completely separate
+```
+
+This is not Docker-in-Docker, and MongoDB is not installed inside the `python`
+container. Both containers are started by the same Docker daemon on the
+Codespace host and joined to a shared network, where the hostname `mongo`
+resolves to the MongoDB container. That is how the notebooks can connect to
+`mongodb://mongo:27017/` without MongoDB being installed alongside them.
+
+Because the terminal runs inside the `python` container, commands like
+`docker ps` are not available there — no Docker CLI or socket is installed in
+it. Only the Codespace host itself can inspect and manage containers.
+
+### Checking whether MongoDB is running
+
+From the integrated terminal, check MongoDB over the network instead of with
+`docker ps`:
+
+```bash
+# 1) Is the port open?
+timeout 3 bash -c "echo > /dev/tcp/mongo/27017" && echo OPEN || echo CLOSED
+
+# 2) Does it actually respond as MongoDB?
+python3 -c "
+from pymongo import MongoClient
+client = MongoClient('mongodb://mongo:27017/', serverSelectionTimeoutMS=3000)
+print(client.admin.command('ping'))
+"
+```
+
+A reply of `{'ok': 1.0}` confirms MongoDB is up and reachable.
+
 ## Run the Jupyter Notebooks
 
 Open and run either notebook:
