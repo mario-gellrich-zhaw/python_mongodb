@@ -40,38 +40,23 @@ The restaurants notebook imports these records into the `restaurant_database` da
 
 ## Prerequisites
 
-- Python 3.11 or newer
-- A running MongoDB server reachable at `mongodb://mongo:27017/`
-- Jupyter Notebook or JupyterLab
+- The MongoDB server from the Codespaces/devcontainer setup running and
+	reachable at `mongodb://mongo:27017/`
+- Jupyter Notebook
+
+This repository is configured for GitHub Codespaces and the development
+container. Python and the dependencies listed in `requirements.txt` are
+provided by the existing `devcontainer.json` setup.
+The MongoDB server is also part of this setup and must be running before the
+notebooks are executed.
 
 The notebooks currently use `/workspace/car_data.json` and `/workspace/restaurant_data.json`. Run them from this workspace, or change those paths in the data-loading cells when using the repository elsewhere.
 
-## Installation
-
-Create and activate a virtual environment, then install the Python dependencies:
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-```
-
-Make sure MongoDB is running before executing cells that connect to it. The notebooks use the hostname `mongo`, which is commonly provided by a Docker Compose service or development-container setup. If MongoDB runs locally under another hostname or port, update the `MongoClient` connection string in both notebooks.
+The notebooks use the hostname `mongo`. If MongoDB runs under another
+hostname or port, update the `MongoClient` connection string in both
+notebooks.
 
 ## Run the Jupyter Notebooks
-
-Start Jupyter from the repository root:
-
-```bash
-jupyter notebook
-```
-
-Alternatively, start JupyterLab:
-
-```bash
-jupyter lab
-```
 
 Open and run either notebook:
 
